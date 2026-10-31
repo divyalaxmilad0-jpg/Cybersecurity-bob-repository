@@ -1,0 +1,463 @@
+
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CyberShield — Project Report</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    background: #ffffff;
+    color: #1f2328;
+  }
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 32px 40px;
+  }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  .header {
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 24px;
+    margin-bottom: 36px;
+  }
+  .badge {
+    display: inline-block;
+    background: #3b82d4;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2328;
+    line-height: 1.25;
+  }
+  .subtitle {
+    margin-top: 6px;
+    color: #57606a;
+    font-size: 1rem;
+  }
+  .meta {
+    margin-top: 16px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .meta-item { font-size: 13px; color: #57606a; }
+  .meta-item strong { color: #1f2328; }
+
+  /* ── Sections ────────────────────────────────────────────── */
+  section { margin-bottom: 36px; }
+  h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1f2328;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  h2 .icon { font-size: 1rem; }
+  p { color: #1f2328; margin-bottom: 10px; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── Feature grid ─────────────────────────────────────────── */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .feature-card {
+    background: #f7f8fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .feature-card .fc-title {
+    font-weight: 600;
+    font-size: 13.5px;
+    color: #1f2328;
+    margin-bottom: 4px;
+  }
+  .feature-card .fc-desc {
+    font-size: 13px;
+    color: #57606a;
+    line-height: 1.55;
+  }
+
+  /* ── Tech table ───────────────────────────────────────────── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  thead th {
+    background: #f7f8fa;
+    border: 1px solid #e5e7eb;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+    color: #57606a;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  tbody td {
+    border: 1px solid #e5e7eb;
+    padding: 8px 12px;
+    vertical-align: top;
+    color: #1f2328;
+  }
+  tbody tr:nth-child(even) td { background: #f7f8fa; }
+
+  /* ── How-it-works flow ────────────────────────────────────── */
+  .flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .flow-step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .flow-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .step-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #3b82d4;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-connector {
+    width: 2px;
+    flex: 1;
+    min-height: 16px;
+    background: #e5e7eb;
+    margin: 4px 0;
+  }
+  .flow-step:last-child .step-connector { display: none; }
+  .step-content {
+    padding-top: 4px;
+    padding-bottom: 18px;
+  }
+  .step-title { font-weight: 600; font-size: 14px; margin-bottom: 3px; }
+  .step-desc  { font-size: 13px; color: #57606a; line-height: 1.55; }
+
+  /* ── Alert risk pills ─────────────────────────────────────── */
+  .risk-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+  .risk-pill {
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12.5px;
+    font-weight: 600;
+  }
+  .risk-high   { background: #fff0f0; color: #c0392b; border: 1px solid #f5c6c6; }
+  .risk-medium { background: #fffbea; color: #9a6f00; border: 1px solid #f0e0a0; }
+  .risk-low    { background: #f0fff4; color: #217a3c; border: 1px solid #a8e6bb; }
+
+  /* ── Future scope list ────────────────────────────────────── */
+  .scope-list { list-style: none; padding: 0; }
+  .scope-list li {
+    padding: 9px 12px 9px 14px;
+    border-left: 3px solid #3b82d4;
+    background: #f7f8fa;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 8px;
+    font-size: 13.5px;
+    color: #1f2328;
+  }
+  .scope-list li span {
+    font-weight: 600;
+    color: #3b82d4;
+    margin-right: 6px;
+  }
+
+  /* ── Footer ───────────────────────────────────────────────── */
+  footer {
+    margin-top: 48px;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 14px;
+    text-align: center;
+    font-size: 12px;
+    color: #57606a;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  
+  <div class="header">
+    <div class="badge">Project Report</div>
+    <h1>🛡️ CyberShield</h1>
+    <p class="subtitle">Security Activity Dashboard — Real-time Login &amp; Threat Monitoring</p>
+    <div class="meta">
+      <div class="meta-item"><strong>Type:</strong> Cybersecurity Dashboard</div>
+      <div class="meta-item"><strong>Framework:</strong> Streamlit (Python)</div>
+      <div class="meta-item"><strong>Date:</strong> October 2026</div>
+      <div class="meta-item"><strong>Context:</strong> IBM Cybersecurity Bootcamp</div>
+    </div>
+  </div>
+
+  
+  <section>
+    <h2><span class="icon">📌</span> 1. Project Overview</h2>
+    <p>
+      <strong>CyberShield</strong> is a web-based cybersecurity monitoring dashboard built with
+      Python and Streamlit. It provides security analysts and IT teams with a centralised,
+      real-time view of user login activity, letting them quickly identify failed access
+      attempts, unusual patterns, and potentially malicious IP addresses — all without
+      needing a dedicated SIEM or external tooling.
+    </p>
+    <p>
+      The dashboard presents four high-level KPI metrics, a filterable login records table,
+      two analytical charts, and a rule-based security alerts engine that categorises threats
+      by risk level (High / Medium / Low). It is intentionally lightweight — built on plain
+      Python logic with no machine-learning dependencies — making it easy to understand,
+      extend, and deploy in any environment that runs Python.
+    </p>
+  </section>
+
+  
+  <section>
+    <h2><span class="icon">✨</span> 2. Key Features</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="fc-title">📊 KPI Metric Cards</div>
+        <div class="fc-desc">Four at-a-glance counters: Total Logins, Successful Logins, Failed Logins, and live Suspicious Activities computed from the loaded dataset.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-title">📋 Filterable Login Table</div>
+        <div class="fc-desc">An interactive, colour-coded table of login records (timestamp, username, IP, result). A dropdown filter lets users view All, Success, or Failed entries instantly.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-title">📈 Login Result Breakdown Chart</div>
+        <div class="fc-desc">A bar chart comparing successful vs. failed login counts across the loaded dataset, giving an instant visual sense of the success/failure ratio.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-title">🗺️ Failed Logins by IP Chart</div>
+        <div class="fc-desc">A ranked bar chart highlighting which IP addresses generated the most failed attempts — the tallest bar is immediately actionable as a potential threat source.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-title">🚨 Rule-Based Security Alerts</div>
+        <div class="fc-desc">An automatic detection engine flags any IP that accumulates 3 or more failed logins. Alerts are sorted and colour-coded by risk level with detailed reason text.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-title">🔴🟡🟢 Three-Tier Risk Scoring</div>
+        <div class="fc-desc">Alerts are classified as High (≥10 failures), Medium (5–9), or Low (3–4), each with a distinct colour and explanatory rationale to guide triage decisions.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-title">🎨 Dark-Theme UI</div>
+        <div class="fc-desc">A GitHub-inspired dark colour scheme (#0d1117 background, #58a6ff accent) with fully custom CSS applied via Streamlit's markdown injection.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-title">💾 Session-State Persistence</div>
+        <div class="fc-desc">Loaded records are stored in Streamlit's session_state so the data and all derived views (charts, alerts, filters) persist across user interactions without re-fetching.</div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section>
+    <h2><span class="icon">🛠️</span> 3. Technologies Used</h2>
+    <table>
+      <thead>
+        <tr><th>Technology</th><th>Role</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Python 3</strong></td>
+          <td>Core language</td>
+          <td>All application logic, data processing, and rule evaluation written in plain Python.</td>
+        </tr>
+        <tr>
+          <td><strong>Streamlit</strong></td>
+          <td>Web framework &amp; UI</td>
+          <td>Handles routing, widget rendering, layout columns, session state, and data display with minimal boilerplate.</td>
+        </tr>
+        <tr>
+          <td><strong>pandas</strong></td>
+          <td>Data manipulation</td>
+          <td>Used for DataFrame creation, column filtering, value counts, and Styler API to colour-code table cells.</td>
+        </tr>
+        <tr>
+          <td><strong>HTML / CSS</strong></td>
+          <td>Custom styling</td>
+          <td>Injected via <code>st.markdown(unsafe_allow_html=True)</code> to implement the dark theme, metric card overrides, and alert cards with coloured left borders.</td>
+        </tr>
+        <tr>
+          <td><strong>Python dicts &amp; lists</strong></td>
+          <td>Detection engine</td>
+          <td>The brute-force detection rule uses only built-in data structures — no ML, no external libraries — keeping the logic transparent and auditable.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  
+  <section>
+    <h2><span class="icon">⚙️</span> 4. How It Works</h2>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-line">
+          <div class="step-circle">1</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">Data Ingestion</div>
+          <div class="step-desc">
+            The analyst clicks <em>Generate Sample Data</em>. The 20 pre-defined login records
+            (timestamp, username, IP address, result) are written into
+            <code>st.session_state["records"]</code>, making them available to all downstream
+            components for the rest of the session.
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-line">
+          <div class="step-circle">2</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">Failure Counting (Detection Engine)</div>
+          <div class="step-desc">
+            A plain Python loop iterates over every record and increments a counter in a
+            <code>failed_per_ip</code> dictionary for each failed login. This runs at the top
+            of the script on every Streamlit rerun, so the counts always reflect the current
+            session data.
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-line">
+          <div class="step-circle">3</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">Risk Classification</div>
+          <div class="step-desc">
+            Each IP whose failure count reaches the alert threshold (≥ 3) is assigned a risk
+            level via <code>get_risk_level()</code>: <strong style="color:#c0392b">High</strong> (≥ 10),
+            <strong style="color:#9a6f00">Medium</strong> (5–9), or <strong style="color:#217a3c">Low</strong> (3–4).
+            The resulting alert objects are sorted High → Medium → Low.
+          </div>
+          <div class="risk-row">
+            <span class="risk-pill risk-high">🔴 High — ≥ 10 failures</span>
+            <span class="risk-pill risk-medium">🟡 Medium — 5–9 failures</span>
+            <span class="risk-pill risk-low">🟢 Low — 3–4 failures</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-line">
+          <div class="step-circle">4</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">KPI Metrics Display</div>
+          <div class="step-desc">
+            Four <code>st.metric()</code> cards render Total Logins (1,482), Successful Logins
+            (1,390), Failed Logins (72), and the live <em>Suspicious Activities</em> count
+            (number of IPs that crossed the suspicious threshold of ≥ 5 failures).
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-line">
+          <div class="step-circle">5</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">Interactive Table &amp; Filter</div>
+          <div class="step-desc">
+            The login records are loaded into a pandas DataFrame and displayed via
+            <code>st.dataframe()</code> with a Styler that colours the Result column green
+            (Success) or red (Failed). A selectbox dropdown allows filtering by result type,
+            with a live summary caption updating below the table.
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-line">
+          <div class="step-circle">6</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">Charts Rendering</div>
+          <div class="step-desc">
+            Two <code>st.bar_chart()</code> visualisations are rendered side-by-side: the
+            Login Result Breakdown (Success vs. Failed overall) and the Failed Logins by IP
+            Address (ranked descending). Both charts are built from the unfiltered dataset
+            to always show the full picture.
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-line">
+          <div class="step-circle">7</div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">Security Alert Cards</div>
+          <div class="step-desc">
+            Each flagged IP is rendered as a coloured alert card using inline HTML injected
+            via <code>st.markdown()</code>. Cards display the IP, all usernames attempted,
+            total failure count, risk level, and a plain-English explanation. A second
+            selectbox lets the analyst filter alerts by risk level.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section>
+    <h2><span class="icon">🚀</span> 5. Future Scope</h2>
+    <ul class="scope-list">
+      <li><span>→</span> <strong>Live data ingestion:</strong> Replace the static sample records with a real-time feed from system logs (e.g. <code>/var/log/auth.log</code>, Windows Event Log, or a syslog server) via file polling or a database connection.</li>
+      <li><span>→</span> <strong>Machine-learning anomaly detection:</strong> Augment the rule-based engine with an ML model (e.g. Isolation Forest or time-series clustering) to surface behavioural anomalies that threshold rules would miss.</li>
+      <li><span>→</span> <strong>IP geolocation &amp; threat intelligence:</strong> Integrate an API such as ip-api.com or AbuseIPDB to enrich each alert with country-of-origin, ISP data, and prior abuse reports.</li>
+      <li><span>→</span> <strong>Automated response actions:</strong> Add one-click buttons to block a suspicious IP via a firewall API (iptables, AWS Security Groups, etc.) or trigger a webhook to a ticketing system like Jira or PagerDuty.</li>
+      <li><span>→</span> <strong>User behaviour analytics (UBA):</strong> Track per-user login patterns over time (normal hours, typical IP ranges) and alert when a login deviates from the established baseline.</li>
+      <li><span>→</span> <strong>Historical trend charts:</strong> Add time-series line charts showing login volumes and failure rates over hours/days to help analysts spot attack campaigns that unfold slowly.</li>
+      <li><span>→</span> <strong>Authentication &amp; role-based access:</strong> Protect the dashboard itself with login credentials and restrict alert acknowledgement or block actions to authorised security personnel only.</li>
+      <li><span>→</span> <strong>Export &amp; reporting:</strong> Add a one-click CSV/PDF export of filtered records and alerts for incident documentation and compliance reporting.</li>
+    </ul>
+  </section>
+
+  
+  <footer>Made with IBM Bob</footer>
+</div>
+</body>
+</html>
